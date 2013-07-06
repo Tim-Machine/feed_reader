@@ -66,19 +66,21 @@
       <ul>
         @foreach($rss->item as $item)
           <li>
-            <div class="articleTitle"><a href="{{$item->link}}">{{$item->title}}</a></div>
-            <div>
-              Posted by {{$item->{'dc:creator'} }} <abbr class="timeago" title="{{$item->pubDate}}">{{$item->pubDate}}</abbr>
+            <div class="itemWrapper" data-isopen="false">
+              <div class="articleTitle"><a href="{{$item->link}}">{{$item->title}}</a></div>
+              <div>
+                Posted by {{$item->{'dc:creator'} }} <abbr class="timeago" title="{{$item->pubDate}}">{{$item->pubDate}}</abbr>
 
-              <div class="btn-group">
-                <button class="btn"><i class="icon-comment"></i> {{$item->{'slash:comments'} }} </button>
-                <button class="btn">Middle</button>
+                <div class="btn-group">
+                  <button class="btn"><i class="icon-comment"></i> {{$item->{'slash:comments'} }} </button>
+                  <button class="btn">Middle</button>
+                </div>
+
+
               </div>
-
-
-            </div>
-            <div class="content">
-                {{$item->{'content:encoded'} }}
+              <div class="content">
+                  {{$item->{'content:encoded'} }}
+              </div>
             </div>
           </li>
         @endforeach
@@ -89,6 +91,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script src="/assets/js/jquery.sidr.min.js"></script>
     <script src="/assets/js/timeago.js"></script>
+    <script src="/assets/js/jquery.colaps.js"></script>
     <script src="/assets/js/interface.js"></script>
   </body>
 </html>
