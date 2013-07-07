@@ -71,9 +71,9 @@
               <div>
                 Posted by {{$item->{'dc:creator'} }} <abbr class="timeago" title="{{$item->pubDate}}">{{$item->pubDate}}</abbr>
 
-                <div class="btn-group">
-                  <button class="btn"><i class="icon-comment"></i> {{$item->{'slash:comments'} }} </button>
-                  <button class="btn">Middle</button>
+                <div class="btn-group small">
+                  <button class="btn small"><i class="icon-comment"></i> {{$item->{'slash:comments'} }} </button>
+                  <button class="btn small">Middle</button>
                 </div>
 
 

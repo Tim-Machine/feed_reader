@@ -22,12 +22,12 @@ class rederinterface
 
 	displayHandler: ()=> 
 		$item = $('.itemWrapper')
-		$item.on 'click', (e)->
+		$('.articleTitle').on 'click', (e)->
 			e.preventDefault()
-			$(this).find('.content').slideToggle()
-		item.find('a').on 'click' , (e)->
+			$(this).parents('.itemWrapper').find('.content').slideToggle()
+		$item.find('a').on 'click' , (e)->
 			e.preventDefault()
 
 
 rederinterface = new rederinterface("sidr");
-rederinterface.displayHandler();
+rederinterface.displayHandler(); 

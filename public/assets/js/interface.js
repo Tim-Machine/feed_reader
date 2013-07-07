@@ -48,11 +48,11 @@
     rederinterface.prototype.displayHandler = function() {
       var $item;
       $item = $('.itemWrapper');
-      $item.on('click', function(e) {
+      $('.articleTitle').on('click', function(e) {
         e.preventDefault();
-        return $(this).find('.content').slideToggle();
+        return $(this).parents('.itemWrapper').find('.content').slideToggle();
       });
-      return item.find('a').on('click', function(e) {
+      return $item.find('a').on('click', function(e) {
         return e.preventDefault();
       });
     };
