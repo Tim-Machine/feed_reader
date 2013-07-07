@@ -1,33 +1,36 @@
 (function() {
-  var interface,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+  var rederinterface,
+    _this = this;
 
-  interface = (function() {
+  rederinterface = (function() {
 
-    function interface(elm) {
+    function rederinterface(elm) {
+      var _this = this;
       this.elm = elm;
-      this.closeDisplay = __bind(this.closeDisplay, this);
-      this.openDisplay = __bind(this.openDisplay, this);
-      this.displayHandler = __bind(this.displayHandler, this);
-      this.mouseTracking = __bind(this.mouseTracking, this);
+      this.displayHandler = function() {
+        return rederinterface.prototype.displayHandler.apply(_this, arguments);
+      };
+      this.mouseTracking = function() {
+        return rederinterface.prototype.mouseTracking.apply(_this, arguments);
+      };
       $(this.elm).sidr();
       this.mouseTracking();
       $("abbr.timeago").timeago();
     }
 
-    interface.prototype.action = function(act, target) {
+    rederinterface.prototype.action = function(act, target) {
       return $.sidr(act, target);
     };
 
-    interface.prototype.openMenu = function() {
+    rederinterface.prototype.openMenu = function() {
       return this.action('open', this.elm);
     };
 
-    interface.prototype.closeMenu = function() {
+    rederinterface.prototype.closeMenu = function() {
       return this.action("close", this.elm);
     };
 
-    interface.prototype.mouseTracking = function() {
+    rederinterface.prototype.mouseTracking = function() {
       var _this = this;
       return $(document).mousemove(function(e) {
         if (e.pageX <= 150) {
@@ -42,47 +45,24 @@
       });
     };
 
-    interface.prototype.displayHandler = function() {
-      var _this = this;
-      console.log("loaded");
-      return $('.itemWrapper').on('click', function(event) {
-        var elm, open;
-        elm = $(event.target);
-        if (!elm.hasClass('.itemWrapper')) {
-          open = elm.parents('.itemWrapper').data('isopen');
-        } else {
-          open = elm.data('isopen');
-        }
-        if (open === true) {
-          return $(_this).trigger({
-            type: 'closeDisplay',
-            elm: event.target
-          });
-        } else {
-          return console.log(elm.trigger({
-            type: 'openDisplay'
-          }));
-        }
+    rederinterface.prototype.displayHandler = function() {
+      var $item;
+      $item = $('.itemWrapper');
+      $item.on('click', function(e) {
+        e.preventDefault();
+        return $(this).find('.content').slideToggle();
+      });
+      return item.find('a').on('click', function(e) {
+        return e.preventDefault();
       });
     };
 
-    interface.prototype.openDisplay = function(elm) {
-      console.log(elm(+'??'));
-      $(elm).find('content').show();
-      return $(elm).data('open', true);
-    };
-
-    interface.prototype.closeDisplay = function() {
-      $(this).slideUp();
-      return $(this).data('open', false);
-    };
-
-    return interface;
+    return rederinterface;
 
   })();
 
-  interface = new interface("sidr");
+  rederinterface = new rederinterface("sidr");
 
-  interface.displayHandler();
+  rederinterface.displayHandler();
 
 }).call(this);

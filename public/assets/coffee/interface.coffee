@@ -1,4 +1,4 @@
-class interface
+class rederinterface
 	constructor: (@elm) ->
 		$(@elm).sidr()
 		@mouseTracking()
@@ -7,7 +7,7 @@ class interface
 	action : (act , target)->
 		$.sidr(act,target)
 
-	openMenu : () ->
+	openMenu : () -> 
 		@action 'open', @elm 
 
 	closeMenu : () ->
@@ -20,28 +20,14 @@ class interface
 			else
 				$(@).trigger({type:'closeMenu'})
 
-	displayHandler: ()=>
-		console.log "loaded"
-		$('.itemWrapper').on 'click', (event)=>
-			elm = $(event.target)
-			if not elm.hasClass('.itemWrapper')
-				open = elm.parents('.itemWrapper').data('isopen')
-			else
-				open = elm.data('isopen')
-
-			if open is true
-				$(@).trigger({type:'closeDisplay', elm: event.target})
-			else
-				console.log elm.trigger({type:'openDisplay'})
-
-	openDisplay: (elm)=>
-		console.log elm +'??'
-		$(elm).find('content').show()
-		$(elm).data('open', true)
-	closeDisplay: ()=>
-		$(@).slideUp()
-		$(@).data('open', false)
+	displayHandler: ()=> 
+		$item = $('.itemWrapper')
+		$item.on 'click', (e)->
+			e.preventDefault()
+			$(this).find('.content').slideToggle()
+		item.find('a').on 'click' , (e)->
+			e.preventDefault()
 
 
-interface = new interface("sidr");
-interface.displayHandler();
+rederinterface = new rederinterface("sidr");
+rederinterface.displayHandler();
