@@ -17,15 +17,15 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		$url = 'http://feeds.gawker.com/gizmodo/full';
+		$url = 'http://feeds.feedburner.com/TechCrunch/';
 		$rss = Feed::loadRss($url);
 
 		$data = $this->addDate($rss);
 
-		// echo "<pre>";
-		// print_r($data->item);
-		// echo "</pre>";
-		// exit;
+//		 echo "<pre>";
+//		 print_r($data->item);
+//		 echo "</pre>";
+//		 exit;
 
 		return View::make('hello', array('rss' => $rss) );
 	}
